@@ -1,0 +1,18 @@
+$min = Get-Date '09:00'
+$max = Get-Date '18:00'
+
+$Sun = [Int] [DayOfWeek] "Sunday"
+$Sat = [Int] [DayOfWeek] "Saturday"
+
+$now = Get-Date
+
+if ($min.TimeOfDay -le $now.TimeOfDay -and $max.TimeOfDay -ge $now.TimeOfDay -and $Sun -le $now.DayOfWeek -and $Sat -ge $now.DayOfWeek) {
+  $StartingArgs.CancelStartup = $true
+}
+
+## Add-Type -AssemblyName PresentationCore,PresentationFramework
+## $msgBody = "Go Outside"
+## [System.Windows.MessageBox]::Show($msgBody)
+
+$sh = New-Object -ComObject "Wscript.Shell"
+$intButton = $sh.Popup("Go Outside",30,"Either work or",0+48)
